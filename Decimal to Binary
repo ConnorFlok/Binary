@@ -1,0 +1,32 @@
+public class Binary {
+
+    // Converts a decimal number to binary using recursion (without additional arguments)
+    public static String toBinary(int n) {
+        if (n == 0) {
+            return ""; // Base case: Return an empty string when n is 0
+        }
+        // Recursive case
+        return toBinary(n / 2) + (n % 2);
+    }
+
+    // Converts a decimal number to binary using recursion (with an accumulator for the result)
+    public static String recursiveToBinary(int dec, String answer) {
+        if (dec == 0) {
+            return answer; // Base case: Return the accumulated binary string
+        }
+        // Recursive case: Append n % 2 to the front of the accumulated result
+        return recursiveToBinary(dec / 2, (dec % 2) + answer);
+    }
+
+    public static void main(String[] args) {
+        int number = 13; // Example number to convert to binary
+
+        // Convert using the first method
+        System.out.println("Binary representation of " + number + " (toBinary):");
+        System.out.println(toBinary(number));
+
+        // Convert using the second method
+        System.out.println("Binary representation of " + number + " (recursiveToBinary):");
+        System.out.println(recursiveToBinary(number, ""));
+    }
+}
